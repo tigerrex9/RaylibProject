@@ -19,6 +19,7 @@ int main() {
             DrawFPS(2,2);
             DrawRectangle(RectPos[0],RectPos[1],RectPos[2],RectPos[3], BLUE);
             DrawRectanglePro(Rectangle{200, 200, 100, 100}, Vector2{0,0}, 45.00f, GREEN);
+            DrawText("TEXT text", 100, 100, 50, BLUE);
 
         EndDrawing();
     }
