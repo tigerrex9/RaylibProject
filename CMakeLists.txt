@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(Game)
+project(RaylibProject)
 
 find_package(raylib 3.0 QUIET)
 if (NOT raylib_FOUND) # If there's none, fetch and build raylib
@@ -20,6 +20,6 @@ endif()
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Game src/main.cpp)
+add_executable(RaylibProject src/main.cpp)
 
-target_link_libraries(Game raylib)
+target_link_libraries(RaylibProject raylib)
