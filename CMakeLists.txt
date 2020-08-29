@@ -20,6 +20,6 @@ endif()
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Game main.cpp)
+add_executable(Game src/main.cpp)
 
 target_link_libraries(Game raylib)

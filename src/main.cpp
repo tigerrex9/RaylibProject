@@ -5,7 +5,9 @@ using namespace std;
 int main() {
     const int screenWidth = 800;
     const int screenHeight = 450;
-    int RectPos[4] = {screenWidth/2, screenHeight/2, screenWidth/4, screenHeight/4};
+    Rectangle rectangle = {200,200,100,100};
+    Vector2 recOrigin = {50,50};
+    float recRot = 45.0;
 
     InitWindow(screenWidth, screenHeight, "My Game");
 
@@ -13,13 +15,11 @@ int main() {
 
     while (!WindowShouldClose())
     {
-
+        recRot += 0.5;
         BeginDrawing();
-            ClearBackground(BROWN);
+            ClearBackground(RAYWHITE);
             DrawFPS(2,2);
-            DrawRectangle(RectPos[0],RectPos[1],RectPos[2],RectPos[3], BLUE);
-            DrawRectanglePro(Rectangle{200, 200, 100, 100}, Vector2{0,0}, 45.00f, GREEN);
-            DrawText("TEXT text", 100, 100, 50, BLUE);
+            DrawRectanglePro(rectangle, recOrigin, recRot, GREEN);
 
         EndDrawing();
     }
