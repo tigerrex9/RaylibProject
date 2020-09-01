@@ -21,7 +21,7 @@ int main() {
         int PosY;
         int Speed;
         int FallSpeed = 10;
-        Texture2D sprite;
+        Texture2D Sprite;
     };
 
     Object player;
@@ -35,7 +35,7 @@ int main() {
     player.PosY = 10;
     player.Speed = 10;
     player.FallSpeed = 1;
-    //player.sprite = LoadTexture("../src/assets/Player.png");
+    player.Sprite = LoadTexture("../src/assets/Player.png");
 
     Rectangle floor0 = {10, 400, 720, 40};
 
@@ -51,7 +51,7 @@ int main() {
         //Drawing
         BeginDrawing();
             ClearBackground(RAYWHITE);
-            DrawTexture(player.sprite, player.PosX, player.PosY, RAYWHITE);
+            DrawTexture(player.Sprite, player.PosX, player.PosY, RAYWHITE);
             DrawRectangleRec(floor0, RED);
         EndDrawing();
 
