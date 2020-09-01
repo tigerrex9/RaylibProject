@@ -31,11 +31,11 @@ int main() {
     player.isSprinting = false;
     player.VelocityX = 0;
     player.VelocityY = 0;
-    player.PosX = 100;
-    player.PosY = 100;
+    player.PosX = 10;
+    player.PosY = 10;
     player.Speed = 10;
-    player.FallSpeed = 10;
-    player.sprite = LoadTexture("../src/assets/Player.png");
+    player.FallSpeed = 1;
+    //player.sprite = LoadTexture("../src/assets/Player.png");
 
     Rectangle floor0 = {10, 400, 720, 40};
 
@@ -51,7 +51,6 @@ int main() {
         //Drawing
         BeginDrawing();
             ClearBackground(RAYWHITE);
-            DrawFPS(2,2);
             DrawTexture(player.sprite, player.PosX, player.PosY, RAYWHITE);
             DrawRectangleRec(floor0, RED);
         EndDrawing();
