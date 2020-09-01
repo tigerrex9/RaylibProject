@@ -35,6 +35,8 @@ int main() {
     player.PosY = 10;
     player.Speed = 10;
     player.FallSpeed = 1;
+
+    // idk why this isnt working :(
     player.Sprite = LoadTexture("../src/assets/Player.png");
 
     Rectangle floor0 = {10, 400, 720, 40};
