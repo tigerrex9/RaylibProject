@@ -8,21 +8,43 @@ int main() {
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    bool isPlayerFalling = true;
-    bool isPlayerSprinting = false;
+
+    class Object{
+    public:
+        int Height;
+        int Width;
+        bool isFalling = false;
+        bool isSprinting = false;
+        int VelocityX = 0;
+        int VelocityY = 0;
+        int PosX;
+        int PosY;
+        int Speed;
+        int FallSpeed = 10;
+        Texture2D sprite;
+    };
+
+    Object player;
+    player.Height = 100;
+    player.Width = 60;
+    player.isFalling = false;
+    player.isSprinting = false;
+    player.VelocityX = 0;
+    player.VelocityY = 0;
+    player.PosX = 100;
+    player.PosY = 100;
+    player.Speed = 10;
+    player.FallSpeed = 10;
+    player.sprite = LoadTexture("../src/assets/Player.png");
+
+    Rectangle floor0 = {10, 400, 720, 40};
+
+
     bool isHoldingL = false;
     bool isHoldingR = false;
-    int playerVelocityX = 0;
-    int playerVelocityY = 0;
-    int playerPosX = 100;
-    int playerPosY = 100;
-    int playerSpeed = 10;
-    int FallSpeed = 10;
 
     InitWindow(screenWidth, screenHeight, "My Game");
     SetTargetFPS(60);
-
-    Texture2D Player = LoadTexture("../src/assets/Player.png");
 
     while (!WindowShouldClose())
     {
@@ -30,29 +52,39 @@ int main() {
         BeginDrawing();
             ClearBackground(RAYWHITE);
             DrawFPS(2,2);
-            DrawTexture(Player, playerPosX, playerPosY, RAYWHITE);
+            DrawTexture(player.sprite, player.PosX, player.PosY, RAYWHITE);
+            DrawRectangleRec(floor0, RED);
         EndDrawing();
 
+        //Collision  !!!!!! NEEEDS WORK !!!!!!!
+        if (player.PosY + player.Height == floor0.y){
+            player.isFalling = false;
+        }else{
+            player.isFalling = true;
+        }
+
         //Movement
-        if (isPlayerFalling){
-            playerVelocityY += FallSpeed;
+        if (player.isFalling){
+            player.VelocityY += player.FallSpeed;
         }
         else{
-            playerVelocityY = 0;
+            player.VelocityY = 0;
         }
-        playerPosY += playerVelocityY;
+        player.PosY += player.VelocityY;
 
-        if (isPlayerSprinting){
-            playerSpeed *= 2;
+        if (player.isSprinting){
+            player.Speed *= 2;
         }
         if (isHoldingL){
-            playerVelocityX += playerSpeed;
+            player.VelocityX += player.Speed;
         }
         if (isHoldingR){
-            playerVelocityX += -playerSpeed;
+            player.VelocityX += -player.Speed;
         }
-        playerVelocityX = 0;
-        playerSpeed = 10;
+        player.PosX += player.VelocityX;
+
+        player.VelocityX = 0;
+        player.Speed = 10;
     }
 
     CloseWindow();
